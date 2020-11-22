@@ -1,12 +1,12 @@
 ---
-title: Http Customer
+title: Http User
 keywords: soul
-description: Http Customer
+description: Http User
 ---
 
 ## Features
 
-* In this chapter, the aim is to help Http Customer
+* In this chapter, the aim is to help Http User
 
 * soul gateway uses divide plug-in handling http request that invokded under soul-admin backgroud.
 
@@ -32,7 +32,7 @@ description: Http Customer
 
 * Of course, we need to restart the gateway.
 
-## gateway intercats with http request（springMVC customer）
+## gateway interacts with http request（springMVC customer）
 
 * pls make sure divide plug-in has opned under `soul-admin` background.
 
@@ -137,9 +137,9 @@ description: Http Customer
   }
    ```
 
-* Kick off your project, your interface intercats with gateway.
+* Kick off your project, your interface interacts with gateway.
 
-## gateway intercats with http request（（other language，not springMvc）
+## gateway interacts with http request（（other language，not springMvc）
 
 * first of all, find the divide plug-in in `soul-admin`, then add selctor and regulator which will compare and screen the flux.
 
@@ -157,9 +157,9 @@ description: Http Customer
  
 ```yaml
 
-# for example, if you have a order service and it has a interface, request path http://localhost:8080/test/save
+# for example, if you have a order service and it has a interface, request address http://localhost:8080/test/save
 
-# Now need to replace with http://localhost:9195/order/test/save
+# Now need to replace the address with http://localhost:9195/order/test/save
 
 # We can see localhost:9195 is your gateway's ip port，default port number is 9195 ，/order is your contextPath which you configured with gateway.
 
