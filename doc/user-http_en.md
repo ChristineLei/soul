@@ -1,18 +1,18 @@
 ---
-title: Http User
+title: Http Customer
 keywords: soul
-description: Http User
+description: Http Customer
 ---
 
 ## Features
 
-* In this chapter, the aim is to help Http User
+* In this chapter, the aim is to help Http Customer
 
-* soul gateway uses divide plug-in handling http request that invokded under soul-admin backgroud.
+* soul gateway uses divide plugin handling http request that invokded under soul-admin backgroud.
 
 * Before we start, we should be aware of running the `soul-admin`, and [Environment Setup](setup.md) is OK。
 
-## Setting up gateway proxy plug-in for Http.
+## Setting up gateway proxy plugin for Http.
 
 * Add these dependencies in gateway's `pom.xml`：
 ```xml
@@ -32,13 +32,13 @@ description: Http User
 
 * Of course, we need to restart the gateway.
 
-## gateway interacts with http request（springMVC customer）
+## integrate gateway with http request（springMVC user）
 
-* pls make sure divide plug-in has opned under `soul-admin` background.
+* pls make sure divide plugin has opned under `soul-admin` background.
 
-##### Soul-Client register methods。 （apply for SpringMvc,SpringBoot customer）
+##### Soul-Client register methods。 （apply for SpringMvc,SpringBoot user）
 
-* SpringBoot customer
+* SpringBoot user
   
    * add these dependencies in your local maven repository `pom.xml`: 
 ```xml
@@ -57,13 +57,13 @@ description: Http User
        contextPath: /http
        appName: http
        full: false  
-   # adminUrl: ip + port of your soul-admin, pls note that "http://" is necessary.
+   # adminUrl: 'ip + port' that running on your soul-admin project, pls note that 'http://' is necessary.
    # port: your project port number
-   # contextPath: gateway will route with it which is the prefix of your MVC project's URL path, such as/order,/product etc.
+   # contextPath: the route prefix in soul gateway of your MVC project, such as /order ，/product etc，gateway will route with this.
    # appName：your application name，default value is`spring.application.name`.
    # full: set true means providing proxy service for your entire service, or only a few controller.
    ``` 
- * SpringMvc customer
+ * SpringMvc user
    * add these dependensies in your local mavne repository `pom.xml`.: 
 ```xml
        <dependency>
@@ -86,7 +86,7 @@ description: Http User
          <property name="full" value="false"/>
     </bean>
    ``` 
-* Add this annotation in your `controller` interface.
+* Add this annotation `@SoulSpringMvcClient` in your `controller` interface.
   
    * you can apply the annotation to class-level in a controller.the property of 'path' is prefix and '/**' will apply proxy service for entire interfaces. 
   
@@ -137,11 +137,11 @@ description: Http User
   }
    ```
 
-* Kick off your project, your interface interacts with gateway.
+* Kick off your project, your interface integrate with gateway.
 
-## gateway interacts with http request（（other language，not springMvc）
+## integration gateway with http request（（other language，not springMvc）
 
-* first of all, find the divide plug-in in `soul-admin`, then add selctor and regulator which will compare and screen the flux.
+* first of all, find the divide plugin in `soul-admin`, then add selctor and regulator which will compare and screen the flux.
 
 * if you don't know how to config, pls refer to [selector regulation introduction](selector.md)。
 
@@ -153,19 +153,19 @@ description: Http User
 
 * firstly，the domain name that requested before is your service, now need to replace with gateway's domain name.
 
-* secondly，soul gateway needs a route prefix which comes from `contextPath`, it configured when accesing the project, you can change it freely in divide plug-in of `soul-admin` if your faimiliar with it. 
+* secondly，soul gateway needs a route prefix which comes from `contextPath`, it configured during the integration with gateway, you can change it freely in divide plugin of `soul-admin`, if your familiar with it.
  
 ```yaml
 
-# for example, if you have a order service and it has a interface, request address http://localhost:8080/test/save
+# for example, if you have a order service and it has a interface, the request url: http://localhost:8080/test/save
 
-# Now need to replace the address with http://localhost:9195/order/test/save
+# Now need to change to:  http://localhost:9195/order/test/save
 
 # We can see localhost:9195 is your gateway's ip port，default port number is 9195 ，/order is your contextPath which you configured with gateway.
 
 # other parameters, the request method doesn't change.
 
-# Any questions, pls add wechat group and we can talk about it.
+# Any questions, pls join the group and we can talk about it.
 
 ```
 * then you can visit, very easy and simple。

@@ -1,23 +1,23 @@
 ---
-title: dubbo with soul gateway
+title: integrate dubbo with soul gateway
 keywords: soul
-description: dubbo with soul gateway
+description:integrate dubbo with soul gateway
 ---
 
 
 ## Features
 
-* This article is a tutorial for customer using dubbo service to integrate with soul gateway.
+* This chapter is a guide about integrating dubbo service with soul gateway.
 
 * Support alibaba dubbo（< 2.7.x）and apache dubbo (>=2.7.x)。
 
-* Pls start `soul-admin` correctly beofore integrating , and[Environement Setup](setup.md) is Ok。
+* Pls start `soul-admin` correctly beofore integrating , and [Environement Setup](setup.md) is Ok。
 
 
-## integrate gateway's plug-in that suppots dubbo
+## add gateway's plugin that suppots dubbo
 
 
-* Add these dependensies in gateway's `pom.xml`：
+* include these dependensies in gateway's `pom.xml`：
 
   * alibaba dubbo customer, replace the dubbo's version with yours as below，either with jar file of registration center.
   
@@ -104,7 +104,7 @@ description: dubbo with soul gateway
 
 * restart gateway service.
 
-## dubbo integrate with gateway,pls refer to : [soul-test-dubbo](https://github.com/Dromara/soul/tree/master/soul-test/soul-test-dubbo)
+## dubbo's integration with gateway,pls refer to : [soul-test-dubbo](https://github.com/Dromara/soul/tree/master/soul-test/soul-test-dubbo)
 
  * alibaba dubbo customer
    
@@ -127,7 +127,7 @@ description: dubbo with soul gateway
           adminUrl: http://localhost:9095
           contextPath: /dubbo
           appName: dubbo    
-         # adminUrl: ip + port of your soul-admin project, pls note that 'http://' is necessary.
+         # adminUrl: 'ip + port' that running on your soul-admin project, pls note that 'http://' is necessary.
          # contextPath: the route prefix in soul gateway of your project, such as /order ，/product etc，gateway will route with this.
          # appName：your application name, default value is the application name in dubbo config.
   ```    
@@ -211,9 +211,9 @@ description: dubbo with soul gateway
 
 ## Define dubbo configuration
 
-* firstly enable `dubbo` option in `soul-admin` plug-in management.
+* firstly enable `dubbo` option in `soul-admin` plugin management.
 
-* then configure your registry address in `dubbo ` plug-in management.
+* then configure your registry address in `dubbo ` plugin management.
 
 ```yaml
 {"register":"zookeeper://localhost:2181"}   or {"register":"nacos://localhost:8848"}
